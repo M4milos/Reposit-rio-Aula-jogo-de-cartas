@@ -47,5 +47,42 @@
 		<button type="submit" name="acao" value="sortear">Sortear</button>
 		<button type="submit" name="acao" value="jogar">jogar</button><br><br>	
 	</form>
+	<?php  
+
+
+	
+	if (isset($_POST['nome'])) {
+	if ($nipe != 0) {
+		
+
+if ($acao == 'sortear') {
+	echo "Cartas sorteadas: <br>";
+
+	$cartas = SortearCarta($numerocartas,$nipe);
+
+//var_dump($cartas);
+}
+	if ($acao == 'jogar'){	
+		echo "$nome:<br>";
+		
+		$cartas = SortearCarta($numerocartas,$nipe);
+
+	echo "<br>Computador: <br>";
+
+	$arrayComputador =	Computador($numerocartas,$nipec);
+	
+	$SomaUsuario = SomaArray($cartas);
+
+	$SomaComputador = SomaArray($arrayComputador);
+
+	echo "<br><br>Soma das cartas do usuário: ".$SomaUsuario." - Soma das cartas do computador: ".$SomaComputador;
+
+	VerificaGanhador($SomaUsuario,$SomaComputador);
+
+
+}
+}
+}
+	?>
 </body>
 </html>
